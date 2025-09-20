@@ -1,0 +1,62 @@
+<?php
+
+namespace Lareon\Modules\Product\App\Logic;
+
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Lareon\Modules\Product\App\Models\Product;
+use Teksite\Extralaravel\Traits\TrashMethods;
+use Teksite\Handler\Actions\ServiceWrapper;
+use Teksite\Handler\Services\FetchDataService;
+
+class ProductLogic
+{
+    use TrashMethods;
+
+    public function get(mixed $fetchData = [])
+    {
+        return app(ServiceWrapper::class)(function () use ($fetchData) {
+            return app(FetchDataService::class)(Product::class, ['title'], ...$fetchData);
+        });
+    }
+
+    public function register(array $input)
+    {
+        return app(ServiceWrapper::class)(function () use ($input) {
+
+            $product=Product::query()->create(Arr::except($input, ['seo' ,'tag']));
+            $product->properties()->attach($input['properties'] ?? []);
+            $product->assignTags($inputs['tags'] ?? null);
+            $product->saveSeo($inputs['seo'] ?? []);
+            return $product;
+        } ,withHandler: false);
+    }
+
+    public function change(array $input, Product $product)
+    {
+        return app(ServiceWrapper::class)(function () use ($input, $product) {
+
+            $input['publish']=isset($input['publish']) ? 1 : 0;
+            $product->update($input);
+            $product->properties()->sync($input['properties'] ?? []);
+            $product->assignTags($inputs['tags'] ?? null);
+            $product->saveSeo($inputs['seo'] ?? []);
+            return $product;
+        });
+    }
+
+    public function delete(Product $product)
+    {
+        return app(ServiceWrapper::class)(function () use ($product) {
+            $product->deactiveSeo();
+            $product->delete();
+        });
+    }
+
+    protected function getModelClass(): string
+    {
+        return Product::class;
+    }
+}
+
+

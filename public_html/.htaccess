@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    Options -MultiViews -Indexes
+    RewriteEngine On
+
+
+    RewriteCond %{THE_REQUEST} \s/index\.php [NC]
+    RewriteRule ^index\.php$ / [L,R=301]
+
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule \.(?:jpg|jpeg|png|gif|ico|webp|avif|svg|css|js|woff2?|ttf|eot|mp4|mp3)$ - [L,NC]
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>

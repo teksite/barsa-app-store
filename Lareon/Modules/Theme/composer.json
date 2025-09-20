@@ -1,0 +1,50 @@
+{
+    "name": "teksite/theme",
+    "description": "This package is made for lareon (laravel)",
+    "keywords": ["laravel", "laravel" , "Theme"],
+
+    "authors": [
+        {
+            "name": "Sina Zangiband",
+            "email": "sina.zangiband@gmail.com",
+            "homepage": "https://teksite.net",
+            "role":"manager"
+        },
+        {
+            "name": "Sina zb",
+            "email": "sina.zangiband@laratek.ir",
+            "homepage": "https://laratek.ir",
+            "role": "developer"
+        }
+    ],
+    "require": {
+
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Lareon\\Modules\\Theme\\": "/",
+            "Lareon\\Modules\\Theme\\App\\": "App/",
+            "Lareon\\Modules\\Theme\\Database\\Factories\\": "Database/Factories/",
+            "Lareon\\Modules\\Theme\\Database\\Seeders\\": "Database/Seeders/"
+        },
+         "files": [
+
+         ]
+    },
+    "require-dev": {
+
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lareon\\Modules\\Theme\\Tests\\": "Tests/"
+        }
+    }
+}

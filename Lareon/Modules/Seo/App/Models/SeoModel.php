@@ -1,0 +1,34 @@
+<?php
+
+namespace Lareon\Modules\Seo\App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Lareon\Modules\Seo\App\Enums\FollowableEnum;
+use Lareon\Modules\Seo\App\Enums\IndexableEnum;
+
+class SeoModel extends Model
+{
+    protected $fillable = ["model_type", "model_id", "title", "description", "keywords", "conical_url", "indexable", "followable", "seo_type", "schema",];
+
+    protected $casts = [
+        "keywords" => 'json',
+        "schema" => 'json',
+
+    ];
+
+    static function rulesForModels():array
+    {
+        return [
+            "seo.meta.title"=>'nullable|string',
+            "seo.meta.description"=>'nullable|string',
+            "seo.meta.keywords"=>'nullable|string',
+            "seo.meta.conical_url"=>'nullable|string',
+
+            "seo.meta.indexable" => ['nullable', 'sometimes', 'in:' . IndexableEnum::INDEX->value . ',' . IndexableEnum::NOINDEX->value],
+            "seo.meta.followable" => ['nullable', 'sometimes', 'in:' . FollowableEnum::FOLLOW->value . ',' . FollowableEnum::NOFOLLOW->value],
+
+            "seo.schema"=>'nullable|array',
+            "seo.schema.*"=>'nullable',
+        ];
+    }
+}

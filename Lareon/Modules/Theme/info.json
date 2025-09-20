@@ -1,0 +1,10 @@
+{
+    "version":"1.0.0",
+    "id": "Theme",
+    "title": "Theme",
+    "alias": "theme",
+    "description": "",
+    "keywords": [],
+    "providers": "Lareon\\Modules\\Theme\\App\\Providers\\ThemeServiceProvider"
+}
+

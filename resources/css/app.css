@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --color-main_color: #ff4c28;
+    --color-main_color_alt: #88220f;
+    --color-second_color: #51a2ff;
+    --color-second_color_alt: #0d3b71;
+    --animate-fade-out: fadeOut 3s linear infinite;
+    @keyframes fadeOut {
+       0%,10%,
+        90%,100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.2;
+        }
+    }
+}
+
+@layer components {
+    h1, .h1 {
+        @apply text-3xl font-bold mb-6 text-zinc-50
+    }
+
+    h2, .h2 {
+        @apply text-2xl font-bold mb-6 text-zinc-100
+    }
+
+    h3, .h3 {
+        @apply text-lg font-bold mb-6 text-zinc-100
+    }
+
+    h4, .h4 {
+        @apply font-bold mb-1 text-zinc-100
+    }
+
+    h5, .h5 {
+        @apply text-sm font-bold mb-1 text-zinc-100
+    }
+
+    h6, .h6 {
+        @apply text-sm font-bold mb-1 text-zinc-100
+    }
+
+    p, .text, .p {
+        @apply text-zinc-200
+    }
+
+    p, .p {
+        @apply mb-3
+    }
+
+    .x-box {
+        @apply p-6 rounded-2xl shadow-xl bg-zinc-900
+    }
+
+    .tkicon {
+        @apply fill-none stroke-current
+    }
+
+    .tkicon.active {
+        @apply stroke-main_color
+    }
+
+    .btn-stroke {
+        @apply px-3 py-2 border border-gray-300 rounded-lg shadow
+    }
+
+    .input {
+        @apply border border-zinc-600 px-3 py-1 rounded focus:outline-2 focus:outline-main_color bg-transparent block w-full text-zinc-300
+    }
+
+    .inner-container {
+        @apply w-11/12 md:w-3/4 max-w-7xl mx-auto
+    }
+
+    .light-link {
+        @apply text-zinc-200 hover:text-main_color
+    }
+
+    .bg-theme-1 {
+        background-image: url("/public_html/storage/uploads/theme/background-1.png");
+    }
+
+    .bg-theme-2 {
+        background-image: url("/public_html/storage/uploads/theme/background-2.png");
+    }
+
+    .bg-theme-3 {
+        background-image: url("/public_html/storage/uploads/theme/background-3.png");
+    }
+
+    .bg-theme-4 {
+        background-image: url("/public_html/storage/uploads/theme/background-4.svg");
+    }
+
+
+    .bg-theme-6 {
+        background-image: url("/public_html/storage/uploads/theme/background-6.jpg");
+    }
+
+    .bg-theme-7 {
+        background-image: url("/public_html/storage/uploads/theme/background-7.jpg");
+    }
+
+    .bg-theme-8 {
+        background-image: url("/public_html/storage/uploads/theme/background-8.png");
+    }
+
+    .bg-theme-9 {
+        background-image: url("/public_html/storage/uploads/theme/background-9.png");
+    }
+}

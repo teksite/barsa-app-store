@@ -1,0 +1,2 @@
+INSERT INTO `questionnaire_form_rules` (`id`, `form_id`, `rules`, `created_at`, `updated_at`) VALUES
+    (1, 1, '[{\"field\":\"name\",\"rules\":\"required|string|max:100\"},{\"field\":\"company\",\"rules\":\"nullable|string|max:100\"},{\"field\":\"phone\",\"rules\":\"required|string|max:15\"},{\"field\":\"email\",\"rules\":\"required|string|email\"},{\"field\":\"message\",\"rules\":\"required|string|max:500\"}]', '2025-09-15 06:56:19', '2025-09-15 06:56:19');

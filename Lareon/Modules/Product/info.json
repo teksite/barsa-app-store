@@ -1,0 +1,10 @@
+{
+    "version":"1.0.0",
+    "id": "Product",
+    "title": "Product",
+    "alias": "product",
+    "description": "",
+    "keywords": [],
+    "providers": "Lareon\\Modules\\Product\\App\\Providers\\ProductServiceProvider"
+}
+

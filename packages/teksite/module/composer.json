@@ -1,0 +1,58 @@
+{
+    "name": "teksite/module",
+    "description": "a package to create modules for a laravel project",
+    "keywords": [
+        "modules",
+        "laravel",
+        "lareon",
+        "module",
+        "modularity"
+    ],
+    "authors": [
+        {
+            "name": "sina zangibadn",
+            "email": "teksite.design@gmail.com"
+        }
+    ],
+    "version": "2.0.3",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Teksite\\Module\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "require": {
+        "php": ">=8.2",
+        "illuminate/support": "~12.0",
+        "teksite/handler": "*",
+        "teksite/extralaravel": "*",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "wikimedia/composer-merge-plugin": "^2.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Teksite\\Module\\ModuleServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "wikimedia/composer-merge-plugin": true
+        }
+    },
+    "scripts": {
+        "update-snapshots": "./phpunit --no-coverage -d --update-snapshots",
+        "lint": "pint",
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "pcf": "vendor/bin/php-cs-fixer fix --verbose"
+    }
+}
