@@ -41,8 +41,8 @@
 
     @endsection
     @section('aside')
-        <x-lareon::sections.image value="{{old('featured_image' ,$product->featured_image)  }}" :title="__('featured image')" name="featured_image" />
-        <x-lareon::sections.image value="{{old('images' ,$product->images)  }}" :title="__('images')" name="images" />
+        <x-lareon::sections.image :value="old('featured_image' ,$product->featured_image)" :title="__('featured image')" name="featured_image" size="400*400"/>
+{{--        <x-lareon::sections.gallery :value="old('images' ,$product->images) ?? []" :title="__('images')" name="images" />--}}
        <div class="p-6 rounded-xl border border-zinc-300">
            <x-lareon::sections.checkbox value="1" :title="__('publish')" name="publish" :checked="!!$product->publish" />
        </div>

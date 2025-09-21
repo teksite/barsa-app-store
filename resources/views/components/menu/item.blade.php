@@ -1,7 +1,7 @@
 @props(['item' , 'childrenIcon'=>true])
 @php($hasChildren = $item->children->count())
 
-<a {{$item->url ? 'href='.$item->url :''}} role="{{$item->url ? 'link' : 'button'}}" @click="dropdownOpen = !dropdownOpen" class="flex items-center justify-between gap-3 select-none cursor-pointer hover:bg-zinc-800 px-3 py-1" @scroll.window="dropdownOpen = false">
+<a {{$item->url ? 'href='.$item->url :''}} role="{{$item->url ? 'link' : 'button'}}" @click="dropdownOpen = !dropdownOpen" class="flex items-center justify-between gap-3 select-none cursor-pointer hover:bg-slate-100 px-3 py-3 rounded-lg" @scroll.window="dropdownOpen = false">
     @if($item->pre_icon)
         <i class="tkicon stroke-current min-w-fit cursor-pointer" data-icon="{{$item->pre_icon}}" stroke-width="3" size="8"></i>
     @endif

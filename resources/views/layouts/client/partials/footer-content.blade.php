@@ -1,14 +1,11 @@
-<div class="inner-container grid gap-12 md:grid-cols-2 xl:grid-cols-4 border-primary-800 pb-24">
     <div>
-        @include('layouts.client.partials.footer-col_1')
+        <figure class="flex items-center gap-3">
+            <img src="{{asset('/storage/logo/logo-75x56.png')}}" alt="{{__(config('app.name'))}}" width="75" height="56" loading="lazy" fetchpriority="low" decoding="async">
+            <figcaption class="">
+                <a class="uppercase font-artin font-bold text-xl  text-main_color hover:text-main_color_alt " href="{{url('/')}}">
+                    {{config('app.name')}}
+                </a>
+            </figcaption>
+        </figure>
     </div>
-    <div>
-        @include('layouts.client.partials.footer-col_2')
-    </div>
-    <div>
-        @include('layouts.client.partials.footer-col_3')
-    </div>
-    <div>
-        @include('layouts.client.partials.footer-col_4')
-    </div>
-</div>
+

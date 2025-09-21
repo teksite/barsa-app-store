@@ -1,10 +1,10 @@
 @props(['items'=>[]])
 @if(count($items))
-    <ul class='absolute z-20 end-auto start-11/12 top-0 min-w-xs bg-zinc-900 rounded-lg border border-zinc-950 px-6 py-3 space-y-6 invisible group-hover:visible'>
+    <ul {{$attributes->merge(['class'=>'absolute z-10 top-12 min-w-xs bg-white/95 rounded-lg backdrop-blur-2xl border border-zinc-300 px-3 py-3 space-y-3 invisible'])}}>
         @foreach($items as $item)
-            <li class="relative">
+            <li class="relative group">
                 <x-menu.item :item="$item"/>
-                <x-menu.simple.sub :items="$item->children"  id="item__{{$item->id}}" aria-labelledby="item__{{$item->id}}"/>
+                <x-menu.simple.sub id="item__{{$item->id}}" aria-labelledby="item__{{$item->id}}" :items="$item->children"/>
             </li>
         @endforeach
     </ul>

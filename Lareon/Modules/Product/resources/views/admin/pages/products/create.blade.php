@@ -32,7 +32,8 @@
         <x-seo::sections.instance-editor :value="old('seo')"/>
     @endsection
     @section('aside')
-        <x-lareon::sections.image value="{{old('featured_image')}}" :title="__('featured image')" name="featured_image" />
+        <x-lareon::sections.image :value="old('featured_image')" :title="__('featured image')" name="featured_image" size="400*400"/>
+        <x-lareon::sections.gallery :value="old('images' ,[])" :title="__('images')" name="images" />
         <x-tag::sections.tag :value="old('tags')"/>
     @endsection
 

@@ -45,7 +45,6 @@ class CmsDatabaseSeeder extends Seeder
             ->each(fn($role) => $role->permissions()->syncWithoutDetaching($clientPermissions));
 
         if ($user1 = User::find(1)) $user1->assignRole('administrator');
-        if ($user2 = User::find(2)) $user2->assignRole('administrator');
 
 
 

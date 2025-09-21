@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Lareon\CMS\App\Models\User;
 use Lareon\Modules\Seo\App\Traits\SeoAble;
 use Lareon\Modules\Tag\App\Traits\Taggable;
 
@@ -54,7 +55,7 @@ class Product extends Model
     {
         static::addGlobalScope('ancient', function (Builder $builder) {
             if (!request()->routeIs('admin.*') || !auth()->check() || !auth()->user()->can('admin')) {
-                $builder->where('active', true);
+                $builder->where('publish', true);
             }
         });
         static::creating(function ($product) {
@@ -74,6 +75,15 @@ class Product extends Model
         return 'products';
     }
 
+    public function breadcrumb(): array
+    {
+        $breadcrumb= [];
+        if (Route::has('products.index')) $breadcrumb[__('products')] = route('products.index');
+        if (Route::has('products.show')) $breadcrumb[$this->attributes['title']] = $this->path();
+
+        return $breadcrumb;
+    }
+
     public function path()
     {
         return Route::has('products.show') ? route('products.show',$this) : null;
@@ -87,5 +97,10 @@ class Product extends Model
     public function properties()
     {
         return $this->belongsToMany(Property::class ,'products_properties' ,'product_id' , 'property_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

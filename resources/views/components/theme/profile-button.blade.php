@@ -1,11 +1,11 @@
 <div>
     @auth()
         <div class="sm:flex sm:items-center sm:mx-3 w-full">
-            <x-dropdown.simple align="{{is_rtl() ? 'left': 'right' }}" width="min-w-fit" contentClasses="bg-zinc-900/95 w-56 backdrop-blur-2xl">
+            <x-dropdown.simple align="{{is_rtl() ? 'left': 'right' }}" width="min-w-fit" contentClasses="bg-white/85 w-56 backdrop-blur-2xl">
                 <x-slot name="trigger">
                     <button title="{{__('profile')}}" type="button" role="button"
                             class="inline-flex items-center text-sm leading-4 font-medium rounded-md text-zinc-600 hover:text-zinc-200 focus:outline-none transition ease-in-out duration-150">
-                        <img src="{{auth()->user()->featured_image}}" alt="" width="40" height="40" class="rounded-full border border-zinc-600">
+                        <img src="{{auth()->user()->featured_image}}" alt="" width="40" height="40" class="rounded-full border border-zinc-300">
                         <span class="ms-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -20,7 +20,7 @@
                         <span class="absolute inset-y-0 border-s-2 border-dotted border-zinc-300 -start-1.5"></span>
                     </div>
                     <hr class="my-1 borer-zinc-300">
-                    <ul class="space-y-1 *:hover:bg-zinc-800 *:p-1">
+                    <ul class="space-y-1 *:hover:bg-zinc-100 *:p-1">
                         @can('panel')
                             @if(Route::has('panel.announcements.index'))
                             <li class="">
@@ -61,7 +61,6 @@
                                 </a>
                             </li>
                         @endif
-
                     </ul>
                     <div>
                         <hr class="my-1 borer-zinc-300">
@@ -74,8 +73,8 @@
         </div>
     @else
         <a href="{{route('login')}}"
-           class="text py-2 px-3 flex items-center gap-1 min-w-max shadow rounded-lg border border-zinc-600 hover:bg-zinc-900">
-            <span class="font-bold text-sm">{{__('login')}}</span>
+           class="py-2 px-3 rounded-lg border border-main_color hover:bg-main_color_alt text-main_color hover:text-zinc-50 text-xs font-semibold">
+           {{__('login')}}/{{__('register')}}
         </a>
     @endauth
 </div>

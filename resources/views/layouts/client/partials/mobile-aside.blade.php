@@ -1,5 +1,5 @@
 <aside class=" fixed top-0 start-0 w-3/4 sm:w-1/2  transition-all duration-100 " x-cloak="sidebar"
-       :class="sidebar ? 'translate-x-0' : '-translate-x-full' ">
+       :class="sidebar ? 'translate-x-0' : 'translate-x-full' ">
     <div class="h-svh bg-zinc-900 shadow-sm flex flex-col justify-between ps-3 py-3 rounded-lg border border-zinc-600">
         <div class=" overflow-auto flex flex-col gap-1">
             <div class="mb-6 flex items-center gap-1 min-h-fit h-fit">

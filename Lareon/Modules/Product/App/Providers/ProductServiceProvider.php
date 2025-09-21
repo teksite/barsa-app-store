@@ -3,6 +3,8 @@
 namespace Lareon\Modules\Product\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lareon\CMS\App\Models\User;
+use Lareon\Modules\Product\App\Models\Product;
 
 class ProductServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,8 @@ class ProductServiceProvider extends ServiceProvider
     {
          $this->registerCommands();
          $this->registerCommandSchedules();
+        $this->bootDynamicRelations();
+
     }
 
 
@@ -43,4 +47,10 @@ class ProductServiceProvider extends ServiceProvider
             //     $schedule->command('inspire')->hourly();
             // });
         }
+    protected function bootDynamicRelations(): void
+    {
+        User::resolveRelationUsing('products', function ($model) {
+            return $model->hasMany(Product::class);
+        });
+    }
 }

@@ -1,5 +1,5 @@
 @props(['items'=>[]])
-<ul class="flex items-center gap-6 text-zinc-50">
+<ul class="flex items-center gap-6 text font-semibold">
     @foreach($items as $item)
         <li class="relative" x-data="{ dropdownOpen: false }" aria-controls="item__{{$item->id}}" :aria-expanded="dropdownOpen" @click.away="dropdownOpen=false">
             <x-menu.item :item="$item"/>

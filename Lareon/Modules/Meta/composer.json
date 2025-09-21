@@ -1,0 +1,50 @@
+{
+    "name": "teksite/meta",
+    "description": "This package is made for lareon (laravel)",
+    "keywords": ["laravel", "laravel" , "Meta"],
+
+    "authors": [
+        {
+            "name": "Sina Zangiband",
+            "email": "sina.zangiband@gmail.com",
+            "homepage": "https://teksite.net",
+            "role":"manager"
+        },
+        {
+            "name": "Sina zb",
+            "email": "sina.zangiband@laratek.ir",
+            "homepage": "https://laratek.ir",
+            "role": "developer"
+        }
+    ],
+    "require": {
+
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Lareon\\Modules\\Meta\\": "/",
+            "Lareon\\Modules\\Meta\\App\\": "App/",
+            "Lareon\\Modules\\Meta\\Database\\Factories\\": "Database/Factories/",
+            "Lareon\\Modules\\Meta\\Database\\Seeders\\": "Database/Seeders/"
+        },
+         "files": [
+
+         ]
+    },
+    "require-dev": {
+
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lareon\\Modules\\Meta\\Tests\\": "Tests/"
+        }
+    }
+}

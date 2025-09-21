@@ -22,12 +22,12 @@ class SetLanguage
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->routeIs('admin.*')) {
-            $lang = $request->cookie('admin-lang' ,'en');
+            $lang = $request->cookie('admin-lang' ,'fa');
         }else{
-            $lang = $request->cookie('client-lang' ,'en');
+            $lang = $request->cookie('client-lang' ,'fa');
         }
-        if ($request->uri()->host() == 'fa.localhost') {
-            $lang = 'fa';
+        if ($request->uri()->host() == 'en.localhost') {
+            $lang = 'en';
         }
         App::setLocale($lang);
         Config::set('app.locale', $lang);

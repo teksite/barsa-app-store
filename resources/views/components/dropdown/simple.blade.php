@@ -23,7 +23,7 @@
          x-transition:leave-start="transform opacity-100 scale-100"
          x-transition:leave-end="transform opacity-0 scale-95"
          :class="{ 'hidden': ! open }"
-         class="hidden absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg border border-zinc-600 {{ $alignmentClasses }}"
+         class="hidden absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg border border-zinc-300 {{ $alignmentClasses }}"
          >
         <div class="rounded-md p-3 {{ $contentClasses }}">
             {{ $content }}

@@ -69,6 +69,7 @@
                     btn.addEventListener('click', () => {
                         window._currentGalleryTarget = btn.dataset.target;
                         window._currentGalleryName = btn.dataset.name;
+
                         window.open('{{ route('fm.fm-button') }}', 'fm', 'width=1200,height=800');
                     });
                 });
@@ -80,7 +81,6 @@
                 });
             });
 
-            // تابعی که File Manager فراخوانی می‌کند
             function fmSetLink(url) {
                 const galleryBox = document.getElementById(window._currentGalleryTarget);
                 if (!galleryBox) return;

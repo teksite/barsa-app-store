@@ -58,7 +58,7 @@
 </head>
 <body x-data="{sidebar:false ,togglesSidebar() { this.sidebar = !this.sidebar }}" @resize.window="sidebar = false"
       :class="sidebar ? 'overflow-hidden' : ''" id="site-body"
-      class="font-vazir relative bg-gradient-to-r from-zinc-950 to-zinc-900 overflow-x-hidden min-h-svh">
+      class="font-vazir relative bg-slate-200 overflow-x-hidden min-h-svh">
 @include('layouts.client.partials.header')
 {{$slot ?? ''}}
 @include('layouts.client.partials.footer')

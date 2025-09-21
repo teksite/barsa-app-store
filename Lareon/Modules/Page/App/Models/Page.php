@@ -10,6 +10,8 @@ use Lareon\CMS\App\Cast\ImageCast;
 use Lareon\CMS\App\Enums\PublishStatusEnum;
 use Lareon\CMS\App\Models\Scopes\PublishStatusScope;
 use Lareon\Modules\Comment\App\Traits\Commentable;
+use Lareon\Modules\Meta\App\Models\MetaModel;
+use Lareon\Modules\Meta\App\Traits\HasMeta;
 use Lareon\Modules\Seo\App\Interfaces\HasSeo;
 use Lareon\Modules\Seo\App\Traits\SeoAble;
 use Lareon\Modules\Tag\App\Traits\Taggable;
@@ -17,7 +19,7 @@ use Teksite\Extralaravel\Casts\SlugCast;
 
 class Page extends Model implements HasSeo
 {
-    use SoftDeletes, Taggable, SeoAble ,Commentable ;
+    use SoftDeletes, Taggable, SeoAble ,Commentable ,HasMeta ;
 
     protected $fillable = ['parent_id', 'title', 'slug', 'body', 'excerpt', 'featured_image', 'template', 'publish_status', 'published_at'];
 
@@ -67,4 +69,6 @@ class Page extends Model implements HasSeo
     {
         return 'pages';
     }
+
+
 }

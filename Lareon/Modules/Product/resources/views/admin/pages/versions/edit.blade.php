@@ -17,7 +17,7 @@
 
     @endsection
     @section('aside')
-        <x-lareon::sections.date :title="__('published date')" name="published_at" :required="false" :open="true" :value="old('published_at' ,$version->published_at?->format('Y-m-d'))"/>
+        <x-lareon::sections.time :title="__('published date')" name="published_at" :required="false" :open="true" :value="old('published_at' ,$version->published_at?->format('Y-m-d'))"/>
         <x-product::sections.release-type  :required="true" :open="true" :value="old('release_type' , $version->release_type)"/>
     @endsection
 </x-lareon::admin-editor-layout>
