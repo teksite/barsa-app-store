@@ -116,4 +116,5 @@ class User extends Authenticatable
 
         return $breadcrumb;
     }
+
 }

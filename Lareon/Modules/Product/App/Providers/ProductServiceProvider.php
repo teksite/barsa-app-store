@@ -24,7 +24,7 @@ class ProductServiceProvider extends ServiceProvider
     {
          $this->registerCommands();
          $this->registerCommandSchedules();
-        $this->bootDynamicRelations();
+//        $this->bootDynamicRelations();
 
     }
 

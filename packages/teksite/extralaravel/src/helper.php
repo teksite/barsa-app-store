@@ -121,10 +121,10 @@ if (!function_exists('arrayToDot')) {
      */
     function arrayToDot(string $name): ?string
     {
-        $dottedName= str_contains($name, '[')
-            ? preg_replace(['/\[/', '/\]/'], ['.' ,''], $name)
+        $dottedName = str_contains($name, '[')
+            ? preg_replace(['/\[/', '/\]/'], ['.', ''], $name)
             : $name;
-        return trim($dottedName ,'.');
+        return trim($dottedName, '.');
 
     }
 }
@@ -190,9 +190,9 @@ if (!function_exists('is_rtl')) {
 
 if (!function_exists('get_error')) {
 
-    function get_error($errors ,string $name)
+    function get_error($errors, string $name)
     {
-        $stringifiedName=arrayToDot($name);
+        $stringifiedName = arrayToDot($name);
         return $errors->get($stringifiedName);
     }
 }
@@ -261,5 +261,19 @@ if (!function_exists('getStaticData')) {
 
             return $data;
         });
+    }
+}
+if (!function_exists('textToParagraphs')) {
+    function textToParagraphs($text , ?string $className=null): string
+    {
+        $text = trim($text);
+
+        $paragraphs = preg_split('/\r\n|\r|\n/', $text);
+
+        $paragraphs = array_map(function ($p) use ($className) {
+            return "<p class='$className'>" . trim($p) . "</p>";
+        }, array_filter($paragraphs));
+
+        return implode("\n", $paragraphs);
     }
 }

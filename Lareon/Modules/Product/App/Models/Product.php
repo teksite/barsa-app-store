@@ -3,6 +3,7 @@
 namespace Lareon\Modules\Product\App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,24 @@ class Product extends Model
             'publish'=>'boolean',
         ];
     }
+
+    protected $appends = [
+        'author',
+    ];
+
+
+    protected function author(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) =>[
+                'id'=>$this->user?->id ?? '',
+                'name'=>$this->user?->name ?? '',
+                'path'=>$this->user?->path() ?? '',
+            ]
+        );
+    }
+
+
     /**
      * @param array $globalScopes
      */
@@ -103,4 +122,16 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function groupedProperties()
+    {
+        return $this->properties()
+            ->select('product_properties.id', 'product_properties.title', 'product_properties.group_id')
+            ->with([
+                'group:id,title'
+            ])
+            ->get()
+            ->groupBy(fn($property) => $property->group->title);
+    }
+
 }
