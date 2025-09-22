@@ -74,4 +74,9 @@
     'active' => true,
     'type' => 'self',
   ],
+  'Company' => [
+    'provider' => 'Lareon\\Modules\\Company\\App\\Providers\\CompanyServiceProvider',
+    'active' => true,
+    'type' => 'lareon',
+  ],
 ];

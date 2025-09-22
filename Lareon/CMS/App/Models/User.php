@@ -32,7 +32,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = ['parent_id', 'slug', 'name', 'nick_name', 'email', 'phone', 'telegram_id', 'featured_image', 'email_verified_at', 'phone_verified_at', 'password',];
+    protected $fillable = ['name', 'email', 'phone', 'email_verified_at', 'phone_verified_at', 'password',];
 
 
     /**
@@ -41,13 +41,9 @@ class User extends Authenticatable
     static function rules(): array
     {
         return [
-            'parent_id'=>'nullable|int',
             'name'=>'required|string|max:255',
-            'nick_name'=>'nullable|string|max:255',
             'email'=>'required|string|email|max:255|unique:users',
             'phone'=>'required|string|max:11',
-            'telegram_id'=>'nullable|string|max:255',
-            'featured_image'=>'nullable|string|max:255',
             'password'=>'required|string|min:8',
         ];
     }

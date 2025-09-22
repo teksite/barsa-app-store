@@ -52,7 +52,7 @@
     <meta name="theme-color" content="#ffffff">
 
     {!!  $seo ?? '<title>'.__(config('app.name')).'</title>' !!}
-    @vite(['resources/css/app.css','resources/css/theme.css', 'resources/js/app.js', 'resources/js/theme.js'])
+    @vite(['resources/fonts/font.css','resources/css/app.css','resources/css/theme.css', 'resources/js/app.js', 'resources/js/theme.js'])
 
     @stack('headerScripts')
 </head>

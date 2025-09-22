@@ -8,7 +8,7 @@
 
 @theme {
     --color-main_color: #184377;
-    --color-main_color_alt: #0d294b;
+    --color-main_color_alt: #103561;
     --color-second_color: #ff4c28;
     --color-second_color_alt: #88220f;
     --animate-fade-out: fadeOut 3s linear infinite;
@@ -25,15 +25,15 @@
 
 @layer components {
     h1, .h1 {
-        @apply text-3xl font-bold mb-6 text-zinc-900
+        @apply text-3xl font-bold mb-3 text-zinc-900
     }
 
     h2, .h2 {
-        @apply text-2xl font-bold mb-6 text-zinc-900
+        @apply text-xl font-bold mb-3 text-zinc-900
     }
 
     h3, .h3 {
-        @apply text-lg font-bold mb-6 text-zinc-800
+        @apply text-lg font-bold mb-3 text-zinc-800
     }
 
     h4, .h4 {
@@ -53,7 +53,7 @@
     }
 
     p, .p {
-        @apply mb-3
+        @apply mb-6
     }
 
     .x-box {

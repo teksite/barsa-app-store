@@ -13,14 +13,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id')->nullable()->constrained('users')->nullOnDelete()->cascadeOnUpdate();
-            $table->char('slug', 30)->unique();
             $table->string('name');
-            $table->string('nick_name')->nullable();
             $table->string('email')->unique();
             $table->string('phone' ,15)->nullable()->unique();
-            $table->unsignedBigInteger('telegram_id')->nullable();
-            $table->string('featured_image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');

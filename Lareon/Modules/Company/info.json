@@ -1,0 +1,10 @@
+{
+    "version":"1.0.0",
+    "id": "Company",
+    "title": "Company",
+    "alias": "company",
+    "description": "",
+    "keywords": [],
+    "providers": "Lareon\\Modules\\Company\\App\\Providers\\CompanyServiceProvider"
+}
+
