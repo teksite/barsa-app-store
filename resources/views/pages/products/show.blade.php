@@ -1,54 +1,7 @@
 <x-client-layout :seo="$seo">
     <x-slot name="editAddressPage">{{route('admin.products.edit',$product)}}</x-slot>
-    <header class="inner-container py-12 border-b border-zinc-600">
-        <section class="">
-            <figure class="flex items-center gap-3">
-                <img src="{{$product->featured_image}}" alt="{{$product->title}}" class="rounded-xl" width="100"
-                     height="100" decoding="async" loading="lazy" fetchpriority="high">
-                <figcaption class="flex flex-col gap-3 justify-center">
-                    <h1 class="mb-0">
-                        {{$product->title}}
-                    </h1>
-
-                    <a href="{{$product->author['path']}}"
-                       class="text-main_color hover:text-main_color_alt font-semibold">
-                        {{$product->author['name']}}
-                    </a>
-                </figcaption>
-            </figure>
-            @if($product->excerpt)
-                <p class="mt-3">
-                    {{$product->excerpt}}
-                </p>
-            @endif
-
-            <ul class="space-y-3 mt-6">
-                @foreach($product->groupedProperties() as $group=>$properties)
-                    <li class="flex items-center gap-3">
-                        <span class="font-bold">{{$group}}</span>
-                        <ul class="flex items-center gap-1 text">
-                            @foreach($properties as $property)
-                                <li class="bg-slate-300 text-slate-600 rounded-xl px-3 py-1 select-none">
-                                    {{$property->title}}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                @endforeach
-            </ul>
-
-            @if($product->author['id'])
-                <div class="flex items-center gap-1 mt-3 ">
-                    <i class="tkicon fill-yellow-600 stroke-none" data-icon="star"></i>
-                    <p class="mb-0 text-yellow-600 font-bold">
-                        {{__('the official barsa novin ray software')}}
-                    </p>
-                </div>
-            @endif
-        </section>
-
-    </header>
-    <div class="py-12 inner-container">
+    <x-product.header :product="$product"/>
+    <article class="py-12 inner-container">
         <div class="grid gap-6 xl:grid-cols-3 ">
             <main class="xl:col-span-2">
                 @if(count($product?->images ?? []))
@@ -65,6 +18,9 @@
                     </div>
                 @endif
                 <section class="mb-6">
+                    <h2>
+                        {{__('description')}}
+                    </h2>
                     {!! textToParagraphs($product->body) !!}
                 </section>
                 @if(count($product?->features ?? []))
@@ -98,26 +54,121 @@
                     </section>
                 @endif
                 @if($product?->catalog)
-                    <a href="{{$product->catalog}}" class="inline-block w-11/12 md:w-1/2 bg-white rounded-lg p-6  mt-6 ">
-                       <div class=" flex items-center gap-3 font-bold">
-                           <i class="tkicon fill-none stroke-main_color stroke-1 min-w-fit w-fit" size="48" data-icon="cloud-arrow" ></i>
-                           <div class="text-xs w-full">
-                               <span  class="text-main_color_alt">{{__('download the catalog')}}</span>
-                               <hr class="border-main_color my-1">
-                               <span class="text-main_color">{{$product->title}}</span>
-                           </div>
-                       </div>
+                    <a href="{{$product->catalog}}"
+                       class="inline-block w-11/12 md:w-1/2 bg-white rounded-lg p-6  mt-6 ">
+                        <div class=" flex items-center gap-3 font-bold">
+                            <i class="tkicon fill-none stroke-main_color stroke-1 min-w-fit w-fit" size="48"
+                               data-icon="cloud-arrow"></i>
+                            <div class="text-xs w-full">
+                                <span class="text-main_color_alt">{{__('download the catalog')}}</span>
+                                <hr class="border-main_color my-1">
+                                <span class="text-main_color">{{$product->title}}</span>
+                            </div>
+                        </div>
                     </a>
                 @endif
 
             </main>
             <aside class="">
-                <x-box.simple>
-                    sdfsdfs
-                </x-box.simple>
+                <div class="sticky top-6 space-y-6">
+                    @if($product->owner)
+                        <x-box.simple class="">
+                            <nav>
+                                <h3 class="mb-0">
+                                    {{__('developer')}}
+                                </h3>
+                                <hr class="border-zinc-300 my-3">
+                                <div class="mb-3 flex items-center gap-1 justify-between ">
+                              <span class="flex items-center justify-start gap-1">
+                                @if($product->owner->type == \Lareon\Modules\Company\App\Enums\CompanyTypeEnum::NATURAL->value)
+                                      <i class="tkicon fill-none stroke-current" data-icon="user" size="18"></i>
+                                      {{__('name')}}
+                                  @else
+                                      <i class="tkicon fill-none stroke-current" data-icon="building" size="18"></i>
+                                      {{__('company')}}
+                                  @endif
+                                </span>
+                                    <span>
+                                    {{$product->owner?->title}}
+                                </span>
+                                </div>
+                                <ul class="space-y-3 text">
+                                    @foreach(['email'=>['email' ,'mailto:'] , 'phone'=>['phone' ,'tel:'] , 'telephone'=>['telephone' ,'tel:']] as $key=>$type)
+                                        @if($product->owner?->$key)
+                                            <li>
+                                                <a href="{{$type[1]}}{{$product->owner?->$key}}" rel="external"
+                                                   class="flex items-center gap-1 justify-between text-main_color_alt font-semibold hover hover:bg-slate-50 p-1 rounded-lg">
+                                            <span class="flex items-center justify-start gap-1">
+                                                <i class="tkicon fill-none stroke-current" data-icon="{{$type[0]}}"
+                                                   size="18"></i>
+                                                {{__($key)}}
+                                            </span>
+                                                    <span>
+                                               {{$product->owner?->$key}}
+                                           </span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </nav>
+                        </x-box.simple>
+                    @endif
+                    @if($version)
+                        <x-box.simple class="">
+                            <h3 class="mb-0">
+                                {{__('last version')}}
+                            </h3>
+                            <hr class="border-zinc-300 my-3">
+                            <ul class="space-y-3 text">
+                                <li class="flex items-center justify-between">
+                                <span>
+                                    {{__('version')}}
+                                </span>
+                                    <span>
+                                    {{$version->title}}
+                                </span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                <span>
+                                    {{__('release time')}}
+                                </span>
+                                    <span dir="ltr">
+                                    {{dateAdapter($version->published_at , 'Y-m-d')}}
+                                </span>
+                                </li>
+                            </ul>
+                            <div class="text-center mt-3">
+                                <a href="{{route('products.versions.index', $product)}}"
+                                   class="text-center text-sm text-main_color">
+                                    {{__('all :title',['title'=>__('versions')])}}
+                                </a>
+                            </div>
+                        </x-box.simple>
+                    @endif
+
+                    <div class="class border border-zinc-300 rounded-xl p-6">
+                        <h3 class="mb-0 text-center">
+                            {{__('request demo by barsa')}}
+                        </h3>
+                        <hr class="border-zinc-300 my-3">
+                        <div class="text-center mt-3 flex items-center justify-center">
+                            <x-button.outline  x-on:click="$dispatch('open-modal', 'demo-modal')">
+                                {{__('demo form')}}
+                            </x-button.outline>
+                            <x-modal id="{{$product->id}}" name="demo-modal">
+                               <h2 class="text-center">
+
+                               </h2>
+                            </x-modal>
+                        </div>
+
+                    </div>
+
+                </div>
             </aside>
         </div>
 
 
-    </div>
+    </article>
 </x-client-layout>

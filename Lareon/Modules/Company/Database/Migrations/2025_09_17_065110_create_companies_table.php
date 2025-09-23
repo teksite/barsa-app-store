@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->char('telephone',20)->nullable()->unique();
             $table->char('phone',20)->nullable()->unique();
-            $table->char('email',20)->nullable()->unique();
+            $table->char('email',200)->nullable()->unique();
+            $table->tinyInteger('type')->default(1);
             $table->timestamps();
         });
     }

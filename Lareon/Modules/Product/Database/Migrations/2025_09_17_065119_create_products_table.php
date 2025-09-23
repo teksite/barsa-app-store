@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained('companies')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title');
             $table->string('slug' ,'20')->unique();
             $table->text('excerpt')->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->json('requirements')->nullable();
             $table->string('catalog')->nullable();
             $table->boolean('publish')->default(false);
+            $table->tinyInteger('recommend_type')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

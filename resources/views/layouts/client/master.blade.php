@@ -3,15 +3,15 @@
 <head>
     @if(app()->isProduction())
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7R3BR8EL2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+{{--        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7R3BR8EL2"></script>--}}
+{{--        <script>--}}
+{{--            window.dataLayer = window.dataLayer || [];--}}
+{{--            function gtag(){dataLayer.push(arguments);}--}}
+{{--            gtag('js', new Date());--}}
 
-            gtag('config', 'G-R7R3BR8EL2');
-        </script>
-        <!-- End Google tag (gtag.js) -->
+{{--            gtag('config', 'G-R7R3BR8EL2');--}}
+{{--        </script>--}}
+{{--        <!-- End Google tag (gtag.js) -->--}}
 
     @endif
     <meta charset="UTF-8">
@@ -58,7 +58,7 @@
 </head>
 <body x-data="{sidebar:false ,togglesSidebar() { this.sidebar = !this.sidebar }}" @resize.window="sidebar = false"
       :class="sidebar ? 'overflow-hidden' : ''" id="site-body"
-      class="font-vazir relative bg-slate-200 overflow-x-hidden min-h-svh">
+      class="font-vazir relative bg-slate-100 overflow-x-hidden min-h-svh">
 @include('layouts.client.partials.header')
 {{$slot ?? ''}}
 @include('layouts.client.partials.footer')

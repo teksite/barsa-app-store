@@ -2,7 +2,7 @@
     @section('title', __('edit the :title',['title'=>__('version') . " ($version->title)"]))
     @section('description', __('in this window you can edit the :title of :name' ,['title'=>__('version') , 'name'=>__('product') . " ($product->title)"]))
 
-    @section('formRoute', route('admin.products.update', $product))
+    @section('formRoute', route('admin.products.versions.update', [$product,$version]))
     @section('header.start')
         <x-lareon::link.btn-outline :href="route('admin.products.versions.index',$product)" :title="__('all :title',['title'=>__('versions')])" color="index"/>
         <x-lareon::link.btn-outline :href="route('admin.products.versions.create',$product)" :title="__('new :title',['title'=>__('version')])" color="create" can="admin.product.edit"/>
@@ -18,6 +18,6 @@
     @endsection
     @section('aside')
         <x-lareon::sections.time :title="__('published date')" name="published_at" :required="false" :open="true" :value="old('published_at' ,$version->published_at?->format('Y-m-d'))"/>
-        <x-product::sections.release-type  :required="true" :open="true" :value="old('release_type' , $version->release_type)"/>
+        <x-product::sections.release-type  :required="true" :open="true" :value="old('release_type' , $version->release_type->value)"/>
     @endsection
 </x-lareon::admin-editor-layout>

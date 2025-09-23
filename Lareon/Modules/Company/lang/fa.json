@@ -1,0 +1,11 @@
+{
+    "companies define the grouping of users and indicate under which company each user operate": "شرکت‌ها گروه‌بندی کاربران را مشخص می‌کنند و تعیین می‌کنند هر کاربر تحت نظر کدام شرکت فعالیت دارد",
+    "companies": "شرکت‌ها",
+    "company": "شرکت",
+    "national id": "شناسه ملی",
+    "legal person": "شخص حقوقی",
+    "natural person": "شخص حقیقی",
+    "person type":"نوع",
+    "The national code is invalid": "کد ملی معتبر نیست.",
+    "The company national ID is invalid.": "شناسه ملی معتبر نیست."
+}

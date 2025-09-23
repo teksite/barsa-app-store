@@ -5,6 +5,6 @@
     $requiredMark=$required ? ' <span class="text-red-600">*</spam> ' : '';
 @endphp
 <x-lareon::accordion.box :title="__($title)" :open="$open" :accordion="$accordion">
-    <x-lareon::input.date :type="$type ?? 'date'" :name="$name" id="{{$random}}" :value="$value" :required="$required" {{$attributes}}/>
+    <x-lareon::input.time :type="$type ?? 'date'" :name="$name" id="{{$random}}" :value="$value" :required="$required" {{$attributes}}/>
     <x-lareon::input.error :messages="$errors->get($stringifiedName)"/>
 </x-lareon::accordion.box>

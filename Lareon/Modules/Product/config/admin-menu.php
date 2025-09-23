@@ -2,7 +2,7 @@
 return [
     [
         'title' => 'products',
-        'icon' => 'paper-text',
+        'icon' => 'square-2-2',
         'can' => 'admin.product.*',
         'active' => 'admin.products.*',
         'children' => [

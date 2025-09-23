@@ -51,8 +51,8 @@ class ProductVersionsController extends Controller implements HasMiddleware
      */
     public function store(NewProductVersionRequest $request , Product $product)
     {
-        $version = $this->logic->register($request->validated() , $product)->result;
-        return WebResponse::byResult($res, route('admin.products.versions.edit' , [$product,$version]))->go();
+        $version = $this->logic->register($request->validated() , $product);
+        return WebResponse::byResult($version, route('admin.products.versions.edit' , [$product,$version->result]))->go();
     }
 
     /**

@@ -19,6 +19,7 @@
         "@majidh1/jalalidatepicker": "^0.9.12",
         "alpinejs": "^3.15.0",
         "chart.js": "^4.5.0",
+        "colorthief": "^2.6.0",
         "scrollreveal": "^4.0.9",
         "sortablejs": "^1.15.6",
         "sweetalert2": "^11.23.0",

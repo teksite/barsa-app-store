@@ -3,6 +3,9 @@
 namespace Lareon\Modules\Company\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lareon\CMS\App\Models\User;
+use Lareon\Modules\Comment\App\Models\Comment;
+use Lareon\Modules\Company\App\Models\Company;
 
 class CompanyServiceProvider extends ServiceProvider
 {
@@ -22,6 +25,7 @@ class CompanyServiceProvider extends ServiceProvider
     {
          $this->registerCommands();
          $this->registerCommandSchedules();
+        $this->bootDynamicRelations();
     }
 
 
@@ -43,4 +47,11 @@ class CompanyServiceProvider extends ServiceProvider
             //     $schedule->command('inspire')->hourly();
             // });
         }
+
+    protected function bootDynamicRelations(): void
+    {
+        User::resolveRelationUsing('company', function ($model) {
+            return $model->hasMany(Company::class);
+        });
+    }
 }

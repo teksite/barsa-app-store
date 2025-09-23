@@ -42,8 +42,13 @@
     @endsection
     @section('aside')
         <x-lareon::sections.image :value="old('featured_image' ,$product->featured_image)" :title="__('featured image')" name="featured_image" size="400*400"/>
-{{--        <x-lareon::sections.gallery :value="old('images' ,$product->images) ?? []" :title="__('images')" name="images" />--}}
-       <div class="p-6 rounded-xl border border-zinc-300">
+        <x-lareon::sections.gallery :value="old('images' ,$product->images) ?? []" :title="__('images')" name="images" />
+        <x-product::sections.recommend-type :value="old('recommend_type' ,$product->recommend_type->value)"/>
+
+
+        <x-lareon::sections.select-ajax name="company_id" :title="__('company')" :model="\Lareon\Modules\Company\App\Models\Company::class" :url="route('admin.ajax.companies.search')" dataValue="id" dataLabel="title" dataSearch="title" :open="true" :selected="[$product->company_id]"/>
+
+        <div class="p-6 rounded-xl border border-zinc-300">
            <x-lareon::sections.checkbox value="1" :title="__('publish')" name="publish" :checked="!!$product->publish" />
        </div>
 

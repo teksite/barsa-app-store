@@ -27,13 +27,12 @@ export default defineConfig({
         laravel({
             input: [
                 'Lareon/CMS/resources/css/app.css',
-                'Lareon/CMS/resources/fonts/font.css',
 
                 'Lareon/CMS/resources/js/app.js','Lareon/CMS/resources/js/javascript.js',
                 ...globSync('Lareon/Modules/*/resources/js/app.js'),
                 ...globSync('Lareon/Modules/*/resources/css/app.css'),
 
-                'resources/css/app.css','resources/css/theme.css', 'resources/js/app.js', 'resources/js/theme.js',
+                'resources/fonts/font.css','resources/css/app.css','resources/css/theme.css', 'resources/js/app.js', 'resources/js/theme.js',
             ],
             publicDirectory: 'public_html',
             refresh: true,

@@ -4,6 +4,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import ScrollReveal from 'scrollreveal';
+import ColorThief from 'colorthief';
 
 /* ---------------------------
    Utility helpers
@@ -91,6 +92,35 @@ function initRadarChart(container) {
     new Chart(ctx, config);
 }
 
+
+/* ---------------------------
+   pickDomainColor
+   --------------------------- */
+function pickDomainColor() {
+    const img = document.getElementById("productImage");
+    const header = document.getElementById("productHeader");
+    const colorThief = new ColorThief();
+
+    // 🔹 رنگ پیش‌فرض قبل از لود شدن عکس
+    header.style.backgroundImage = `radial-gradient(at 85% 0%, rgba(37, 99, 235, 0.4) 0%, transparent 70%)`;
+    // (rgba(37, 99, 235, 0.4) معادل Tailwind → from-blue-600/40)
+
+    function applyColor() {
+        try {
+            const [r, g, b] = colorThief.getColor(img);
+            const mainColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+            header.style.backgroundImage = `radial-gradient(at 85% 0%, ${mainColor} 0%, transparent 70%)`;
+        } catch (e) {
+            console.error("ColorThief error:", e);
+        }
+    }
+
+    if (img.complete) {
+        applyColor();
+    } else {
+        img.addEventListener("load", applyColor);
+    }
+}
 /* ---------------------------
    Swiper init factory
    - single function to create swipers (reduces repetition)
@@ -295,6 +325,9 @@ function initScrollReveal() {
    - lazy inits, cached DOM, low-overhead handlers
    --------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+    pickDomainColor();
+
+
     // Init lightweight things immediately
     new GlowEffect({ proximity: 40, opacity: 0 });
 
@@ -345,7 +378,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navigation: { nextEl: ".feedbackSwiper-swiper-button-next", prevEl: ".feedbackSwiper-swiper-button-prev", },
 
     });
-
     // lazy init chart when visible (saves work on initial load)
     lazyInit('#personEager', (el) => initRadarChart(el), { rootMargin: '200px' });
 

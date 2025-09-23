@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Lareon\CMS\App\Models\User;
+use Lareon\Modules\Company\App\Models\Company;
+use Lareon\Modules\Product\App\Enums\RecommendTypeEnum;
 use Lareon\Modules\Seo\App\Traits\SeoAble;
 use Lareon\Modules\Tag\App\Traits\Taggable;
 
@@ -16,7 +19,7 @@ class Product extends Model
 {
     use SoftDeletes ,SeoAble ,Taggable;
 
-    protected $fillable = ['title', 'excerpt', 'body', 'featured_image', 'images', 'features', 'features_soon', 'requirements', 'catalog', 'publish'];
+    protected $fillable = ['company_id','user_id','title', 'excerpt', 'body', 'featured_image', 'images', 'features', 'features_soon', 'requirements', 'catalog', 'publish' ,'recommend_type'];
 
     protected function casts(): array
     {
@@ -26,14 +29,21 @@ class Product extends Model
             'features_soon'=>'json',
             'requirements'=>'json',
             'publish'=>'boolean',
+            'recommend_type'=>RecommendTypeEnum::class,
         ];
     }
 
     protected $appends = [
         'author',
+        'owner',
     ];
 
-
+    protected function owner(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) =>$this->company
+        );
+    }
     protected function author(): Attribute
     {
         return Attribute::make(
@@ -57,6 +67,7 @@ class Product extends Model
     public static function rules(): array
     {
         return [
+            "company_id" => "required|exists:companies,id",
             "title" => "string|required|max:255",
             "excerpt" => "nullable|string",
             "body" => "nullable|string",
@@ -67,6 +78,7 @@ class Product extends Model
             "requirements" => "nullable|array",
             "catalog" => "nullable|string|max:255",
             "publish" => "nullable|boolean",
+            "recommend_type" => Rule::enum(RecommendTypeEnum::class),
         ];
     }
 
@@ -121,6 +133,10 @@ class Product extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
     public function groupedProperties()

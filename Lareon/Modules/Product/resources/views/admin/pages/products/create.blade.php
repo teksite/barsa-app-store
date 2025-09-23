@@ -34,6 +34,8 @@
     @section('aside')
         <x-lareon::sections.image :value="old('featured_image')" :title="__('featured image')" name="featured_image" size="400*400"/>
         <x-lareon::sections.gallery :value="old('images' ,[])" :title="__('images')" name="images" />
+        <x-product::sections.recommend-type :value="old('recommend_type')"/>
+
         <x-tag::sections.tag :value="old('tags')"/>
     @endsection
 

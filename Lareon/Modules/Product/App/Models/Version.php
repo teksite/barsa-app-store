@@ -31,7 +31,7 @@ class Version extends Model
             'title'=>'required|string|max:200',
             'release_type'=>Rule::enum(ReleaseTypeEnum::class),
             'changes'=>'nullable|string',
-            'published_at'=>'nullable|string',
+            'published_at'=>'string|required',
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace Lareon\Modules\Product\App\Http\Controllers\Web\Client\Products;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Lareon\Modules\Product\App\Enums\ReleaseTypeEnum;
 use Lareon\Modules\Product\App\Http\Controllers\Controller;
 use Lareon\Modules\Product\App\Models\Product;
 use Lareon\Modules\Seo\App\Logic\SeoGeneratorLogic;
@@ -28,6 +29,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         $seo =$this->seo->generate($product)->result;
-        return View::first(['pages.products.template.'.$product->template , 'pages.products.show'] ,compact('product' , 'seo'));
+        $version=$product->versions()->where('release_type',ReleaseTypeEnum::RELEASED->value)->orderBy('published_at' , 'desc')->first();
+        return view('pages.products.show' ,compact('product' , 'seo' , 'version'));
     }
 }

@@ -1,4 +1,5 @@
-@props(['name' ,'title', 'required'=>false ,'open'=>false ,'accordion'=>true ,"multiple"=>false , 'selected'=>[], 'model' ,'dataLabel' ,'dataValue' ,'dataSearch' ,'url','model' ] )
+@props(['name' ,'title', 'required'=>false ,'open'=>false ,'accordion'=>true ,"multiple"=>false ,
+'selected'=>[], 'model' ,'dataLabel' ,'dataValue' ,'dataSearch' ,'url'] )
 @php
     $random='select_dynamic__'.strtolower(\Illuminate\Support\Str::random(4)).rand(1000 ,9999);
     $stringifiedName=arrayToDot($name);

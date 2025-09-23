@@ -25,6 +25,7 @@ class ProductLogic
         return app(ServiceWrapper::class)(function () use ($input) {
 
             $input['user_id'] ??= auth()->id();
+            $input['company_id'] ??= auth()->user()->company->id;
             $product=Product::query()->create(Arr::except($input, ['seo' ,'tag']));
             $product->properties()->attach($input['properties'] ?? []);
             $product->assignTags($inputs['tags'] ?? null);

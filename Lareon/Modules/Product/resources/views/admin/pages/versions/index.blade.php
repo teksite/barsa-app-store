@@ -2,11 +2,13 @@
     @section('title', __(':title list',['title'=>__('versions')]) . " ($product->title)")
     @section('description', __('versions represent the changelog of the product'))
     @section('header.start')
-        <x-lareon::link.btn-outline :href="route('admin.products.versions.create', $product)" :title="__('create a new one')" color="create" can="admin.product.edit"/>
+        <x-lareon::link.btn-outline :href="route('admin.products.versions.create', $product)"
+                                    :title="__('create a new one')" color="create" can="admin.product.edit"/>
     @endsection
     @section('list')
         <x-lareon::box>
-            <x-lareon::table :headers="['id'=>'#','title'=>__('title'),'release'=>__('release type'),'published_at'=>__('published at'),]">
+            <x-lareon::table
+                    :headers="['id'=>'#','title'=>__('title'),'release'=>__('release type'),'published_at'=>__('published at'),]">
                 @if(count($versions))
                     @foreach($versions as $key=>$version)
                         <tr>
@@ -20,8 +22,12 @@
                             </td>
                             <td>
                                 <div class="action">
-                                    <x-lareon::link.edit :href="route('admin.products.versions.edit' , [$product,$version])" can="admin.product.edit"/>
-                                    <x-lareon::link.delete :href="route('admin.products.versions.destroy' , [$product,$version])" can="admin.product.edit"/>
+                                    <x-lareon::link.edit
+                                            :href="route('admin.products.versions.edit' , [$product,$version])"
+                                            can="admin.product.edit"/>
+                                    <x-lareon::link.delete
+                                            :href="route('admin.products.versions.destroy' , [$product,$version])"
+                                            can="admin.product.edit"/>
                                 </div>
                             </td>
                         </tr>

@@ -1,6 +1,6 @@
 {
   "Lareon/CMS/resources/css/app.css": {
-    "file": "assets/app-CS3B3Jf2.css",
+    "file": "assets/app-CaJ2Fpip.css",
     "src": "Lareon/CMS/resources/css/app.css",
     "isEntry": true
   },
@@ -36,7 +36,7 @@
     "isEntry": true
   },
   "Lareon/Modules/Captcha/resources/js/app.js": {
-    "file": "assets/app-BIjMHF-b.js",
+    "file": "assets/app-BQEWTaK-.js",
     "name": "app",
     "src": "Lareon/Modules/Captcha/resources/js/app.js",
     "isEntry": true
@@ -44,6 +44,17 @@
   "Lareon/Modules/Comment/resources/css/app.css": {
     "file": "assets/app-tn0RQdqM.css",
     "src": "Lareon/Modules/Theme/resources/css/app.css",
+    "isEntry": true
+  },
+  "Lareon/Modules/Company/resources/css/app.css": {
+    "file": "assets/app-tn0RQdqM.css",
+    "src": "Lareon/Modules/Theme/resources/css/app.css",
+    "isEntry": true
+  },
+  "Lareon/Modules/Company/resources/js/app.js": {
+    "file": "assets/app-BIjMHF-b.js",
+    "name": "app",
+    "src": "Lareon/Modules/Company/resources/js/app.js",
     "isEntry": true
   },
   "Lareon/Modules/Fence/resources/css/app.css": {
@@ -160,14 +171,55 @@
     "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app--8geYQ00.css",
+    "file": "assets/app-Dryk2lH8.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/theme.css": {
-    "file": "assets/theme-CFG8nWvC.css",
+    "file": "assets/theme-CqtbQ80O.css",
     "src": "resources/css/theme.css",
     "isEntry": true
+  },
+  "resources/fonts/font.css": {
+    "file": "assets/font-D5yaAWKE.css",
+    "src": "resources/fonts/font.css",
+    "isEntry": true
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-Black.woff2": {
+    "file": "assets/Vazirmatn-RD-Black-BXxqHQeb.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-Black.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-Bold.woff2": {
+    "file": "assets/Vazirmatn-RD-Bold-DgceSQOO.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-Bold.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-ExtraBold.woff2": {
+    "file": "assets/Vazirmatn-RD-ExtraBold-FJ1FnSbU.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-ExtraBold.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-ExtraLight.woff2": {
+    "file": "assets/Vazirmatn-RD-ExtraLight-AX4kDXwk.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-ExtraLight.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-Light.woff2": {
+    "file": "assets/Vazirmatn-RD-Light-DPtLzaWG.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-Light.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-Medium.woff2": {
+    "file": "assets/Vazirmatn-RD-Medium-a8h6ruN1.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-Medium.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-Regular.woff2": {
+    "file": "assets/Vazirmatn-RD-Regular-D1pGFOet.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-Regular.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-SemiBold.woff2": {
+    "file": "assets/Vazirmatn-RD-SemiBold-DnjaLfqB.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-SemiBold.woff2"
+  },
+  "resources/fonts/vazirmatn/Vazirmatn-RD-Thin.woff2": {
+    "file": "assets/Vazirmatn-RD-Thin-Dv2Op1Vz.woff2",
+    "src": "resources/fonts/vazirmatn/Vazirmatn-RD-Thin.woff2"
   },
   "resources/js/app.js": {
     "file": "assets/app-C1NrsDk-.js",
