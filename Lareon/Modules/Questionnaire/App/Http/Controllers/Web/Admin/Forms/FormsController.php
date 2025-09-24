@@ -34,9 +34,7 @@ class FormsController extends Controller implements HasMiddleware
     public function index()
     {
         $forms = $this->logic->get()->result;
-        $count = $this->logic->trashCount()?->result;
-
-        return view('questionnaire::admin.pages.forms.index', compact('forms' ,'count'));
+        return view('questionnaire::admin.pages.forms.index', compact('forms'));
     }
 
     /**

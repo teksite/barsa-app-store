@@ -1,4 +1,3 @@
-
 INSERT INTO `products_properties` (`product_id`, `property_id`) VALUES
                                                                     (3, 1),
                                                                     (1, 4),

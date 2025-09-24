@@ -1,0 +1,2 @@
+INSERT INTO `companies` (`id`, `url`, `national_id`, `title`, `telephone`, `phone`, `email`, `type`, `created_at`, `updated_at`) VALUES
+                                                                                                                                     (2, 'https://tinaksoft.com/', '10102964987', 'تیناک', '02191304847', '02143000091', 'indfo@tinaksoft.com', 1, '2025-09-23 05:09:07', '2025-09-23 05:09:07');

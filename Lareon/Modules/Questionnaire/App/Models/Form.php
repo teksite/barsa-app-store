@@ -3,6 +3,7 @@
 namespace Lareon\Modules\Questionnaire\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Form extends Model
 {

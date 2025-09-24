@@ -169,7 +169,7 @@ const FormHandler = {
     // Handle errors
     handleError(form, responseEl, error) {
         if (error.response?.status === 422) {
-            const messages = error.response.data.messages;
+            const messages = error.response.data.errors;
             this.highlightInvalidFields(form, messages);
             this.displayValidationErrors(responseEl, messages);
             this.showAlert(this.MESSAGES.validationError, 'warning');
@@ -180,16 +180,27 @@ const FormHandler = {
     },
 
     // Highlight invalid fields
-    highlightInvalidFields(form, messages) {
-        form.querySelectorAll('.border-red-600').forEach(input =>
-            input.classList.remove('input_validation-error')
+    highlightInvalidFields(form, errors) {
+        form.querySelectorAll('.input-error-msg').forEach(el => el.remove());
+        form.querySelectorAll('.input_validation-error').forEach(el =>
+            el.classList.remove('input_validation-error')
         );
 
-        Object.keys(messages).forEach(key => {
+        Object.entries(errors).forEach(([key, messages]) => {
             const input = form.querySelector(`[name="${key}"]`);
-            if (input) input.classList.add('input_validation-error');
+            if (input) {
+                input.classList.add('input_validation-error');
+
+                // ساخت المنت خطا
+                errorEl.classList.add('input-error-msg');
+                errorEl.style.color = 'red';
+                errorEl.style.fontSize = '0.875rem';
+                errorEl.textContent = messages[0]; // فقط اولین خطا رو نشون بده
+                input.insertAdjacentElement('afterend', errorEl);
+            }
         });
-    },
+    }
+    ,
 
     // Display validation errors
     displayValidationErrors(responseEl, messages) {

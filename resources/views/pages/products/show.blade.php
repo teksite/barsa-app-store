@@ -152,17 +152,20 @@
                             {{__('request demo by barsa')}}
                         </h3>
                         <hr class="border-zinc-300 my-3">
-                        <div class="text-center mt-3 flex items-center justify-center">
-                            <x-button.outline  x-on:click="$dispatch('open-modal', 'demo-modal')">
-                                {{__('demo form')}}
-                            </x-button.outline>
-                            <x-modal id="{{$product->id}}" name="demo-modal">
-                               <h2 class="text-center">
+                      <div class=" mt-3">
+                          <div class="flex items-center justify-center">
+                              <x-button.outline  x-on:click="$dispatch('open-modal', 'demo-modal')">
+                                  {{__('demo form')}}
+                              </x-button.outline>
+                          </div>
+                          <x-modal id="{{$product->id}}" name="demo-modal">
+                              <h4 class="text-center">
+                                  {{__('demo request form')}}
+                              </h4>
+                              <x-questionnaire::form-layout form="2" :title="$product->title"/>
 
-                               </h2>
-                            </x-modal>
-                        </div>
-
+                          </x-modal>
+                      </div>
                     </div>
 
                 </div>
