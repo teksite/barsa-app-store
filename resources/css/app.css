@@ -80,7 +80,10 @@
         @apply w-11/12 md:w-3/4 max-w-7xl mx-auto
     }
 
-    .light-link {
+    .light-link , p a {
         @apply text-second_color hover:text-second_color_alt
+    }
+    .link{
+        @apply text-main_color hover:text-main_color_alt
     }
 }

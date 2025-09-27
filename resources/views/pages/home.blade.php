@@ -21,9 +21,9 @@
     <main class="py-12 ">
         <section class="inner-container">
             <h2 class="text-center">
-                {{__('some :site software' ,['site'=>__(config('app.name'))])}}
+                {{__('lastest software')}}
             </h2>
-            <ul class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            <ul class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 mt-12">
                 @foreach($products as $product)
                     <li>
                         <x-box.simple>
@@ -45,6 +45,11 @@
 
                 @endforeach
             </ul>
+            <div class="text-center mt-6">
+                <a href="{{route('products.index')}}" class="text-sm link">
+                    {{__('see more software')}}
+                </a>
+            </div>
         </section>
 
     </main>

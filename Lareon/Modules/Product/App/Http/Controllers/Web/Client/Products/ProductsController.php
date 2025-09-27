@@ -11,6 +11,7 @@ use Lareon\Modules\Product\App\Enums\ReleaseTypeEnum;
 use Lareon\Modules\Product\App\Http\Controllers\Controller;
 use Lareon\Modules\Product\App\Models\Group;
 use Lareon\Modules\Product\App\Models\Product;
+use Lareon\Modules\Product\App\Models\Property;
 use Lareon\Modules\Seo\App\Logic\SeoGeneratorLogic;
 
 class ProductsController extends Controller
@@ -21,33 +22,25 @@ class ProductsController extends Controller
 
     public function index(Request $request)
     {
-
-        $page = Page::where('label', 'products index')->first() ?? null;
+        $page = Page::where('label', 'products index')->first();
         $seo = $page ? $this->seo->generate($page)->result : null;
+
+        $properties = $request->input('p', []);
+        $titleSearch = $request->input('t');
+
         $products = Product::query()
-            ->when(request()->has('p'), function (Builder $query) use ($request) {
-                $query->whereHas('properties', function (Builder $q) use ($request) {
-                    $q->where('title', 'like', '%' . $request->get('p') . '%');
-                });
-            })->when(request()->has('t'), function (Builder $query) use ($request) {
-                $query->whereHas('tags', function (Builder $q) use ($request) {
-                    $q->where('title', 'like', '%' . $request->get('t') . '%');
-                })->orWhere('title', 'like', '%' . $request->get('t') . '%');
-            })->when(request()->has('r'), function (Builder $query) use ($request) {
-                $r = match ($request->get('r')) {
-                    'confirmed' => RecommendTypeEnum::CONFIRMED->value,
-                    'official' => RecommendTypeEnum::OFFICIAL->value,
-                    'none' => RecommendTypeEnum::NONE->value,
-                    default=>null,
-                };
-                return $query->where('recommend_type', $r);
+            ->when($properties, fn ($q) => $this->searchInProperties($q, $properties))
+            ->when($titleSearch, function ($q) use ($titleSearch) {
+                $q->orWhere('title', 'like', "%{$titleSearch}%");
             })
             ->orderBy('created_at', 'desc')
             ->paginate(config('handler-settings.client-pagination', 25));
+
         $groups = Group::query()->orderBy('title')->with('properties')->get();
 
         return view('pages.products.index', compact('seo', 'page', 'products', 'groups'));
     }
+
 
     public function show(Product $product)
     {
@@ -55,4 +48,22 @@ class ProductsController extends Controller
         $version = $product->versions()->where('release_type', ReleaseTypeEnum::RELEASED->value)->orderBy('published_at', 'desc')->first();
         return view('pages.products.show', compact('product', 'seo', 'version'));
     }
+
+
+    private function searchInProperties(Builder $query, array $properties = [])
+    {
+        $groupedProperties = Property::whereIn('title', $properties)
+            ->get(['group_id','id','title'])
+            ->groupBy('group_id');
+
+        foreach ($groupedProperties as $groupId => $props) {
+            $prs=$props->pluck('title')->toArray();
+            $query->whereHas('properties', function (Builder $q) use ($prs) {
+                $q->whereIn('title', $prs);
+            });
+        }
+
+        return $query;
+    }
+
 }
