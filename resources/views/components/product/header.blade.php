@@ -3,7 +3,8 @@
 <header class="py-6 bg-radial-[at_85%_0%] rad  to-70% to-transparent" id="productHeader">
     <section class="inner-container border-b border-zinc-600 py-6">
         <figure class="flex items-center gap-3">
-            <img src="{{$product->featured_image}}" alt="{{$product->title}}" class="rounded-xl" width="100" id="productImage"
+            <img src="{{$product->featured_image}}" alt="{{$product->title}}" class="rounded-xl" width="100"
+                 id="productImage"
                  height="100" decoding="async" loading="lazy" fetchpriority="high">
             <figcaption class="flex flex-col gap-3 justify-center">
                 <h1 class="mb-0">
@@ -44,26 +45,23 @@
             @endforeach
         </ul>
 
-        @if($product->author['id'])
-            <div class="flex items-center gap-1 mt-3 ">
-                @if($product->recommend_type == \Lareon\Modules\Product\App\Enums\RecommendTypeEnum::OFFICIAL)
-                    <i class="tkicon fill-green-600 stroke-none" data-icon="star"></i>
-                    <i class="tkicon fill-green-600 stroke-none" data-icon="star"></i>
-                    <i class="tkicon fill-green-600 stroke-none" data-icon="star"></i>
-                    <p class="mb-0 text-green-600 font-bold">
-                        {{__('the official barsa novin ray software')}}
-                    </p>
-                @elseif($product->recommend_type == \Lareon\Modules\Product\App\Enums\RecommendTypeEnum::CONFIRMED)
-                    <i class="tkicon fill-blue-600 stroke-none" data-icon="star"></i>
-                    <p class="mb-0 text-blue-600 font-bold">
-                        {{__('confirmed by barsa novin ray')}}
-                    </p>
-                @else
-                    <i class="tkicon stroke-yellow-600" data-icon="star"></i>
 
-                @endif
-            </div>
-        @endif
+        <div class="flex items-center gap-1 mt-3 ">
+            @if($product->recommend_type == \Lareon\Modules\Product\App\Enums\RecommendTypeEnum::OFFICIAL)
+                <i class="tkicon fill-green-600 stroke-none" data-icon="star"></i>
+                <p class="mb-0 text-green-600 font-bold">
+                    {{__('the official barsa novin ray software')}}
+                </p>
+            @elseif($product->recommend_type == \Lareon\Modules\Product\App\Enums\RecommendTypeEnum::CONFIRMED)
+                <i class="tkicon fill-blue-600 stroke-none" data-icon="star"></i>
+                <p class="mb-0 text-blue-600 font-bold">
+                    {{__('confirmed by barsa novin ray')}}
+                </p>
+            @else
+                <i class="tkicon stroke-yellow-600" data-icon="star"></i>
+
+            @endif
+        </div>
     </section>
 
 </header>

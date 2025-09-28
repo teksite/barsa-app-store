@@ -34,7 +34,6 @@ class Product extends Model
     }
 
     protected $appends = [
-        'author',
         'owner',
     ];
 
@@ -142,7 +141,7 @@ class Product extends Model
     public function groupedProperties()
     {
         return $this->properties()
-            ->select('product_properties.id', 'product_properties.title', 'product_properties.group_id')
+            ->select('id', 'title', 'group_id')
             ->with([
                 'group:id,title'
             ])

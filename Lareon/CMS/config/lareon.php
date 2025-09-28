@@ -147,7 +147,7 @@ return [
             'client.api.v1' => [
                 'path' => 'api.php',
                 'middleware' => ['api'],
-                'prefix' => 'api\\v1',
+                'prefix' => 'api/v1',
                 'name' => 'api.v1.',
             ],
             'client.ajax' => [
