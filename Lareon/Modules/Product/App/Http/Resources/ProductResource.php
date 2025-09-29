@@ -28,7 +28,7 @@ class ProductResource extends JsonResource
             'recommend_type'=>$this->recommend_type,
             "owner"=>new CompanyResource($this->owner),
             "properties"=>$this->groupedProperties(),
-            "last_version"=>$this->versions()?->where('release_type', ReleaseTypeEnum::RELEASED->value)->orderBy('published_at', 'desc')->first(),
+            "last_version"=>new VersionResource($this->versions()?->where('release_type', ReleaseTypeEnum::RELEASED->value)->orderBy('published_at', 'desc')->first()),
         ];
     }
 }

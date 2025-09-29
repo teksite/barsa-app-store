@@ -34,8 +34,8 @@
          x-transition:leave="ease-in duration-200"
          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-         class="mb-6 bg-white p-6 rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto relative border border-zinc-600">
-        <button type="button" title="{{__('close')}}" x-on:click="show =false" class="text-red-600 hover:text-red-800 z-50 absolute top-1 end-3 text-xl cursor-pointer font-bold">
+         class="mb-6 bg-white p-9 rounded-xl overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto relative border border-zinc-600">
+        <button type="button" title="{{__('close')}}" x-on:click="show =false" class="text-zinc-800 z-50 absolute top-1 end-3 text-xl cursor-pointer font-semibold">
             x
         </button>
         {{ $slot }}

@@ -17,22 +17,6 @@
         <x-input.error :messages="$errors->get('company')" class="mt-2"/>
     </div>
 </div>
-
-<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 mb-6">
-    <div>
-        <x-input.label for="phone_{{$random}}" :title="__('phone')" class="text-start"/>
-        <x-input.text id="phone_{{$random}}" class="block w-full" type="text" name="phone" :value="old('phone')"
-                      required autocomplete="tel" inputmode="tel" placeholder="021XXXXXXXX یا 09xxxxxxxxx"/>
-        <x-input.error :messages="$errors->get('phone')" class="mt-2"/>
-    </div>
-    <div>
-        <x-input.label for="email_{{$random}}" :title="__('email')" class="text-start"/>
-        <x-input.text id="email_{{$random}}" class="block w-full" type="email" name="email" :value="old('email')"
-                      required autocomplete="email" inputmode="email" placeholder="example@example.com"/>
-        <x-input.error :messages="$errors->get('email')" class="mt-2"/>
-    </div>
-</div>
-
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 mb-6">
     <div>
         <x-input.label for="activities" :title="__('activities of company')" class="text-start"/>
@@ -41,3 +25,18 @@
         <x-input.error :messages="$errors->get('activities')" class="mt-2"/>
     </div>
 </div>
+
+<div class="mb-6">
+    <x-input.label for="phone_{{$random}}" :title="__('phone')" class="text-start"/>
+    <x-input.text id="phone_{{$random}}" class="block w-full" type="text" name="phone" :value="old('phone')"
+                  required autocomplete="tel" inputmode="tel" placeholder="021XXXXXXXX یا 09xxxxxxxxx"/>
+    <x-input.error :messages="$errors->get('phone')" class="mt-2"/>
+</div>
+<div class="mb-6">
+    <x-input.label for="email_{{$random}}" :title="__('email')" class="text-start"/>
+    <x-input.text id="email_{{$random}}" class="block w-full" type="email" name="email" :value="old('email')"
+                  required autocomplete="email" inputmode="email" placeholder="example@example.com"/>
+    <x-input.error :messages="$errors->get('email')" class="mt-2"/>
+</div>
+
+

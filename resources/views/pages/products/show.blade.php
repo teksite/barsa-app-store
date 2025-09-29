@@ -60,9 +60,9 @@
                             <i class="tkicon fill-none stroke-main_color stroke-1 min-w-fit w-fit" size="48"
                                data-icon="cloud-arrow"></i>
                             <div class="text-xs w-full">
-                                <span class="text-main_color_alt">{{__('download the catalog')}}</span>
+                                <span class="text-main_color_alt">{{__('the catalog of :title' ,['title'=>$product->title])}}</span>
                                 <hr class="border-main_color my-1">
-                                <span class="text-main_color">{{$product->title}}</span>
+                                <span class="text-main_color">{{__('visit the catalog')}} - {{__('click here')}}</span>
                             </div>
                         </div>
                     </a>
@@ -154,16 +154,21 @@
                         <hr class="border-zinc-300 my-3">
                       <div class=" mt-3">
                           <div class="flex items-center justify-center">
-                              <x-button.outline  x-on:click="$dispatch('open-modal', 'demo-modal')">
+                              <x-button.outline class="text-sm"  x-on:click="$dispatch('open-modal', 'demo-modal')">
                                   {{__('demo form')}}
                               </x-button.outline>
                           </div>
                           <x-modal id="{{$product->id}}" name="demo-modal">
-                              <h4 class="text-center">
-                                  {{__('demo request form')}}
-                              </h4>
-                              <x-questionnaire::form-layout form="2" :title="$product->title"/>
+                             <div class="shadow-input mx-auto w-full p-3 rounded-xl border border-zinc-300">
+                                 <h4>
+                                     {{__('demo request form')}}
+                                 </h4>
+                                 <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
+                                     جهت هماهنگی تعیین وقت جهت مشاهده دمو این نرم افزار از طریق برسا نوین رای، فرم زیر را پر و ارسال نمایید.
+                                 </p>
+                                 <x-questionnaire::form-layout form="2" :title="$product->title"/>
 
+                             </div>
                           </x-modal>
                       </div>
                     </div>
