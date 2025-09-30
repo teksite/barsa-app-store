@@ -16,12 +16,12 @@ class VersionsCollection extends ResourceCollection
     {
         return [
             'data' => VersionResource::collection($this->collection),
-            'pagination' => [
-                'current_page' => $this->currentPage(),
-                'per_page' => $this->perPage(),
-                'total' => $this->total(),
-                'last_page' => $this->lastPage(),
-            ],
+//            'pagination' => [
+//                'current_page' => $this->currentPage(),
+//                'per_page' => $this->perPage(),
+//                'total' => $this->total(),
+//                'last_page' => $this->lastPage(),
+//            ],
         ];
 
     }

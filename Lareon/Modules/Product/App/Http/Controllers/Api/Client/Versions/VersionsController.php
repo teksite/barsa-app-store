@@ -12,8 +12,10 @@ class VersionsController extends Controller
 
     public function index(Request $request, Product $product)
     {
-        $offset=$request->input('offset' , 0);
-        $versions= $product?->versions()->orderBy('published_at','desc')->limit(5)->offset($offset)->get();
+        $page=$request->input('page' , 0);
+        $limit=5;
+        $offset=($page - 1) * $limit;
+        $versions= $product?->versions()->orderBy('published_at','desc')->limit($limit)->offset($offset)->get();
         return VersionsCollection::make($versions);
     }
 
