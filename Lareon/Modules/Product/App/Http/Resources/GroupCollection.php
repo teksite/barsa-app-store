@@ -14,6 +14,17 @@ class GroupCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'data' => GroupResource::collection($this->collection),
+        ];
+    }
+
+    public function with($request): array
+    {
+        return [
+            'meta' => [
+                'total' => $this->collection->count(),
+            ],
+        ];
     }
 }
