@@ -45,22 +45,12 @@
                 @else
                     <x-lareon::sections.checkbox value="1" :title="__('verifying phone')" name="phone_verified"/>
                 @endif
-                <x-lareon::sections.text :value="old('telegram_id') ?? $user->telegram_id" :title="__('telegram_id')"
-                                         name="telegram_id"
-                                         :placeholder="__('write a :title',['title'=>__('telegram id')])"/>
                 <x-lareon::sections.password value="" :title="__('new :title' ,['title'=>__('password')])"
                                              name="password" :placeholder="__('leave it empty to not change')"/>
             </div>
-            <x-lareon::sections.image :value="old('featured_image') ?? $user->featured_image" type="avatar" size="400*400" :title="__('avatar')" name="featured_image"/>
-        </x-lareon::box>
+            <img id="single-input-lgqp2334-prev" src="http://app-store.test/storage/admin/avatar-default.jpg" alt="image" loading="lazy" fetchpriority="low" decoding="async" width="600" height="400" data-placheolder="/storage/admin/image-placeholder.jpg" class="w-full max-w-full" data-id="single-input-lgqp2334">        </x-lareon::box>
     @endsection
-    @section('form.before.end')
-        <x-lareon::sections.segment.user-general :data="$meta['general']"/>
-        <x-lareon::sections.segment.user-social :data="$meta['social']"/>
-        <x-lareon::sections.segment.user-images :data="$meta['images']"/>
-        <x-seo::sections.instance-editor :instance="$user" :value="old('seo') ?? $user->getSeo()"/>
 
-    @endsection
     @section('aside')
         <x-lareon::box class="text-xs">
             <div>
@@ -72,7 +62,6 @@
             <x-lareon::sections.roles :instance="$user"/>
             <x-lareon::sections.permissions :instance="$user"/>
         @endif
-        <x-skill::sections.skills :value="old('skills', $user->skills()->pluck('id')->toArray())"/>
 
     @endsection
 </x-lareon::admin-editor-layout>
