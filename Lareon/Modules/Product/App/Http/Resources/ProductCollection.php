@@ -4,7 +4,7 @@ namespace Lareon\Modules\Product\App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Lareon\Modules\Product\App\Enums\ReleaseTypeEnum;
+use Lareon\Modules\Company\App\Http\Resources\CompanyResource;
 
 class ProductCollection extends ResourceCollection
 {

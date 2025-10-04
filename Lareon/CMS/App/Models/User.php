@@ -14,6 +14,8 @@ use Lareon\CMS\App\Cast\AvatarCast;
 use Lareon\CMS\App\Traits\UserHasMeta;
 use Lareon\CMS\Database\Factories\UserFactory;
 
+use Lareon\Modules\Company\App\Models\Company;
+use Lareon\Modules\Product\App\Models\Product;
 use Lareon\Modules\Seo\App\Traits\SeoAble;
 use Teksite\Authorize\Traits\HasAuthorization;
 
@@ -111,6 +113,16 @@ class User extends Authenticatable
         $breadcrumb[$this->attributes['name']] = $this->path();
 
         return $breadcrumb;
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
 }

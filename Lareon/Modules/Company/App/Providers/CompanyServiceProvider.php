@@ -50,8 +50,8 @@ class CompanyServiceProvider extends ServiceProvider
 
     protected function bootDynamicRelations(): void
     {
-        User::resolveRelationUsing('company', function ($model) {
-            return $model->hasMany(Company::class);
-        });
+//        User::resolveRelationUsing('company', function ($model) {
+//            return $model->hasMany(Company::class);
+//        });
     }
 }

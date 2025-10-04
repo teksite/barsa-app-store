@@ -55,13 +55,6 @@ class Product extends Model
     }
 
 
-    /**
-     * @param array $globalScopes
-     */
-    public static function setGlobalScopes(array $globalScopes): void
-    {
-        self::$globalScopes = $globalScopes;
-    }
 
     public static function rules(): array
     {
@@ -84,7 +77,12 @@ class Product extends Model
     protected static function booted(): void
     {
         static::addGlobalScope('ancient', function (Builder $builder) {
-            if (!request()->routeIs('admin.*') || !auth()->check() || !auth()->user()->can('admin')) {
+            if (request()->routeIs('admin.*')  && auth()->user()->can('admin')) {
+                $builder->where('publish', true)->orWhere('publish', false);
+            }elseif (request()->routeIs('panel.*')){
+                $companyId = auth()->user()->company->id;
+                $builder->where('company_id' , $companyId);
+            }else{
                 $builder->where('publish', true);
             }
         });

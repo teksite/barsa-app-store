@@ -4,6 +4,7 @@ namespace Lareon\Modules\Product\App\Logic;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Lareon\CMS\App\Models\User;
 use Lareon\Modules\Product\App\Models\Product;
 use Teksite\Extralaravel\Traits\TrashMethods;
 use Teksite\Handler\Actions\ServiceWrapper;
@@ -19,6 +20,23 @@ class ProductLogic
             return app(FetchDataService::class)(Product::class, ['title'], ...$fetchData);
         });
     }
+    public function getByUser(User|null $user=null , mixed $fetchData = [])
+    {
+        return app(ServiceWrapper::class)(function () use ($fetchData ,$user) {
+            $user ??= auth()->user();
+            return app(FetchDataService::class)($user->products(), ['title'], ...$fetchData);
+        });
+    }
+
+    public function getByCompany(User|null $user=null , mixed $fetchData = [])
+    {
+        return app(ServiceWrapper::class)(function () use ($fetchData ,$user) {
+            $user ??= auth()->user();
+            $company= $user->company;
+            return app(FetchDataService::class)($company->products(), ['title'], ...$fetchData);
+        });
+    }
+
 
     public function register(array $input)
     {

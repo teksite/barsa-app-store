@@ -4,6 +4,7 @@ namespace Lareon\Modules\Product\App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Lareon\Modules\Company\App\Http\Resources\CompanyResource;
 use Lareon\Modules\Product\App\Enums\ReleaseTypeEnum;
 
 class ProductResource extends JsonResource

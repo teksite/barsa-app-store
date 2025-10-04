@@ -49,8 +49,8 @@ class ProductServiceProvider extends ServiceProvider
         }
     protected function bootDynamicRelations(): void
     {
-        User::resolveRelationUsing('products', function ($model) {
-            return $model->hasMany(Product::class);
-        });
+//        User::resolveRelationUsing('products', function ($model) {
+//            return $model->hasMany(Product::class);
+//        });
     }
 }

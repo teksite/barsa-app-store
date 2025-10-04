@@ -4,9 +4,6 @@
 
         </div>
         <div class="min-w-fit flex justify-end items-center gap-6 rounded-lg px-3 py-2">
-            <a href="{{route('admin.setlang')}}">
-                Fa\En
-            </a>
             <a href="/">
                 <i class="tkicon" data-icon="world"></i>
             </a>

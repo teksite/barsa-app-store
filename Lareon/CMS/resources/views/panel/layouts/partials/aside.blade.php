@@ -4,14 +4,14 @@
         <div class="h-full overflow-auto flex flex-col gap-1">
             <div class="mb-6 flex items-center gap-1 min-h-fit h-fit">
                 <div class="w-16">
-                    <x-lareon::logo/>
+                    <img src="/storage/logo/logo-100x75.png" width="100" height="75" loading="eager" decoding="async" fetchpriority="high">
                 </div>
                 <div>
-                    <h1 class="text-3xl font-bold mb-1 capitalize">
-                        LAREON
+                    <h1 class="text-sm font-bold mb-1 uppercase">
+                        barsa novin ray
                     </h1>
                     <span class="text-zinc-600 font-black text-sm">
-                        {{__('welcome :title' ,['title'=>'sina'])}}!
+                        {{__('welcome :title' ,['title'=>auth()->user()->name])}}!
                      </span>
                 </div>
             </div>
