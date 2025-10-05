@@ -3,7 +3,7 @@
 <header class="py-6 bg-radial-[at_85%_0%] rad  to-70% to-transparent" id="productHeader">
     <section class="inner-container border-b border-zinc-600 py-6">
         <figure class="flex items-center gap-3">
-            <img src="{{$product->featured_image}}" alt="{{$product->title}}" class="rounded-xl" width="100"
+            <img src="{{$product->featured_image ?? '/storage/uploads/products/default.jpg'}}" alt="{{$product->title}}" class="rounded-xl" width="100"
                  id="productImage"
                  height="100" decoding="async" loading="lazy" fetchpriority="high">
             <figcaption class="flex flex-col gap-3 justify-center">

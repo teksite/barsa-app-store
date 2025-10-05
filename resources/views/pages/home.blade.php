@@ -29,7 +29,7 @@
                         <x-box.simple>
                             <a href="{{$product->path()}}">
                                 <figure>
-                                    <img src="{{asset($product->featured_image)}}" alt="{{$product->title}}" class="rounded-lg mb-3" decoding="async" fetchpriority="low" loading="lazy" width="100" height="100">
+                                    <img src="{{asset($product->featured_image ?? '/storage/uploads/products/default.jpg')}}" alt="{{$product->title}}" class="rounded-lg mb-3" decoding="async" fetchpriority="low" loading="lazy" width="100" height="100">
                                     <figcaption>
                                         <h3>
                                             {{$product->title}}

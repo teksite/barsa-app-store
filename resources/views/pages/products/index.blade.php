@@ -46,7 +46,7 @@
                         <a href="{{$product->path()}}">
                             <div class="border border-slate-300 bg-white rounded-xl p-3 select-none">
                                 <div class="flex items-start justify-between gap-3">
-                                    <img src="{{$product->featured_image}}" alt="{{$product->title}}"
+                                    <img src="{{$product->featured_image ?? '/storage/uploads/products/default.jpg'}}" alt="{{$product->title}}"
                                          class="rounded-lg mb-6" fetchpriority="low" decoding="async" loading="lazy"
                                          width="100" height="100">
                                     @if($product->recommend_type == \Lareon\Modules\Product\App\Enums\RecommendTypeEnum::OFFICIAL)
