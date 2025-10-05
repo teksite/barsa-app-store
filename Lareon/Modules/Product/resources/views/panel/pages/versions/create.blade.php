@@ -15,4 +15,4 @@
         <x-product::sections.release-type  :required="true" :open="true" :value="old('release_type')"/>
     @endsection
 
-/<x-lareon::panel-editor-layout>
+</x-lareon::panel-editor-layout>

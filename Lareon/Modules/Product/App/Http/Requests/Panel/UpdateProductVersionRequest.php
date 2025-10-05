@@ -12,7 +12,7 @@ class UpdateProductVersionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()->user()->can('admin.product.edit');
+        return auth()->check() && auth()->user()->can('panel.product.edit');
 
     }
 

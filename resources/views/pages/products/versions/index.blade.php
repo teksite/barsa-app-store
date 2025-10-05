@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 @if($version->changes)
-                                    {{textToParagraphs($version->changes)}}
+                                    {!! textToParagraphs($version->changes) !!}
                                 @endif
 
                             </x-box.simple>

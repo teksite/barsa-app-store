@@ -1,5 +1,5 @@
 @if(View::hasSection('header.start') || View::hasSection('header.end') )
-    <div class="x-box flex flex-col sm:flex-row items-center justify-between gap-6 -mt-10 w-11/12 mx-auto" :class="{'me-12 ms-auto' : sidebar }">
+    <div class="x-box flex flex-col sm:flex-row items-center justify-between gap-6 -translate-y-1/2  w-11/12 mx-auto" :class="{'me-12 ms-auto' : sidebar }">
         <div class="flex items-center justify-start gap-3">
             @yield('header.start')
         </div>
