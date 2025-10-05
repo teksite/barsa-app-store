@@ -3,6 +3,7 @@
 namespace Lareon\Modules\Product\App\Http\Controllers\Web\Panel\Products;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Lareon\Modules\Product\App\Http\Controllers\Controller;
 use Lareon\Modules\Product\App\Http\Requests\Panel\NewProductRequest;
@@ -11,7 +12,7 @@ use Lareon\Modules\Product\App\Logic\ProductLogic;
 use Lareon\Modules\Product\App\Models\Product;
 use Teksite\Lareon\Facade\WebResponse;
 
-class ProductsController extends Controller
+class ProductsController extends Controller implements HasMiddleware
 {
     public function __construct(public ProductLogic $logic)
     {

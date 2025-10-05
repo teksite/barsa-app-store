@@ -7,7 +7,7 @@
     @endsection
     @section('list')
         <x-lareon::box>
-            <x-lareon::table :headers="['id'=>'#',__('image'),'title'=>__('title'),'active'=>__('active'),]">
+            <x-lareon::table :headers="['id'=>'#',__('image'),'title'=>__('title'),'active'=>__('active'),'company_id'=>__('company'),]">
                 @if(count($products))
                     @foreach($products as $key=>$product)
                         <tr>
@@ -15,6 +15,7 @@
                             <td class="p-3"><img src="{{$product->featured_image}}" alt="{{$product->title}}" width="90" height="60" loading="lazy" decoding="async" fetchpriority="low"></td>
                             <td>{{$product->title}}</td>
                             <td><span class="px-3 py-1 rounded-xl text-xs {{{$product->publish ? 'bg-green-300 text-green-900' : 'bg-yellow-300 text-yellow-900'}}}}">{{$product->publish ? __('active') : __('pending')}} </span></td>
+                            <td>{{$product->owner->title}}</td>
                             <td>
                                 <div class="action">
                                     <x-lareon::link.show :href="$product->path()"/>

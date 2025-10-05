@@ -1,9 +1,9 @@
-<x-lareon::admin-editor-layout>
-    @section('title', __('new :title',['title'=>__('version')]) ." ($product->title)")
+<x-lareon::panel-editor-layout type="create">
+@section('title', __('new :title',['title'=>__('version')]) ." ($product->title)")
     @section('description', __('in this window you can create a new :title',['title'=>__('version')]))
-    @section('formRoute', route('admin.products.versions.store',$product))
+    @section('formRoute', route('panel.products.versions.store',$product))
     @section('header.start')
-        <x-lareon::link.btn-outline :href="route('admin.products.versions.index',$product)" :title="__('all :title',['title'=>__('versions')])" color="index"/>
+        <x-lareon::link.btn-outline :href="route('panel.products.versions.index',$product)" :title="__('all :title',['title'=>__('versions')])" color="index"/>
     @endsection
     @section('form')
         <x-lareon::sections.title :value="old('title')" name="title" :placeholder="__('enter a unique :title',['title'=>__('title')])" :required="true"/>
@@ -15,4 +15,4 @@
         <x-product::sections.release-type  :required="true" :open="true" :value="old('release_type')"/>
     @endsection
 
-</x-lareon::admin-editor-layout>
+/<x-lareon::panel-editor-layout>

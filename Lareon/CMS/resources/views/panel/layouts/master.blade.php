@@ -47,12 +47,12 @@
 <div class="p-3">
     @include('lareon::panel.layouts.partials.header')
 </div>
-<main class="ms-auto me-0 transition-all duration-100 ">
+<main class="ms-auto me-0 transition-all duration-100 min-h-svh realtive z-10 bg-slate-100 border-b border-zinc-300">
     @include('lareon::panel.layouts.partials.aside')
     <div class="me-0 ms-auto " :class="{'xl:w-5/6' : sidebar }">
         @include('lareon::panel.layouts.partials.lower-header')
         @include('lareon::panel.layouts.partials.errors')
-        <div class="p-6">
+        <div class="p-6 ">
             {!! $slot !!}
         </div>
     </div>

@@ -1,9 +1,9 @@
-<x-lareon::admin-list-layout>
-    @section('title', __(':title list',['title'=>__('versions')]) . " ($product->title)")
+<x-lareon::panel-list-layout>
+@section('title', __(':title list',['title'=>__('versions')]) . " ($product->title)")
     @section('description', __('versions represent the changelog of the product'))
     @section('header.start')
-        <x-lareon::link.btn-outline :href="route('admin.products.versions.create', $product)"
-                                    :title="__('create a new one')" color="create" can="admin.product.edit"/>
+        <x-lareon::link.btn-outline :href="route('panel.products.versions.create', $product)"
+                                    :title="__('create a new one')" color="create" can="panel.product.edit"/>
     @endsection
     @section('list')
         <x-lareon::box>
@@ -23,11 +23,11 @@
                             <td>
                                 <div class="action">
                                     <x-lareon::link.edit
-                                            :href="route('admin.products.versions.edit' , [$product,$version])"
-                                            can="admin.product.edit"/>
+                                            :href="route('panel.products.versions.edit' , [$product,$version])"
+                                            can="panel.product.edit"/>
                                     <x-lareon::link.delete
-                                            :href="route('admin.products.versions.destroy' , [$product,$version])"
-                                            can="admin.product.edit"/>
+                                            :href="route('panel.products.versions.destroy' , [$product,$version])"
+                                            can="panel.product.edit"/>
                                 </div>
                             </td>
                         </tr>
@@ -46,4 +46,4 @@
         </x-lareon::box>
     @endsection
 
-</x-lareon::admin-list-layout>
+</x-lareon::panel-list-layout>

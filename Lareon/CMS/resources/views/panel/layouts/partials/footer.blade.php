@@ -1,4 +1,4 @@
-<footer class="sticky bottom-0 -z-10 border border-zinc-300 py-3">
+<footer class="sticky bottom-0 -z-10  py-3">
     <div class="text-center text-sm">
         <a href="https://teksite.net">developed by <span class="font-bold">TEKSITE</span></a>
     </div>
