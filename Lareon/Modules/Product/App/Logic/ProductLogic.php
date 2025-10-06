@@ -55,7 +55,6 @@ class ProductLogic
     public function change(array $input, Product $product)
     {
         return app(ServiceWrapper::class)(function () use ($input, $product) {
-
             $input['publish']=isset($input['publish']) ? 1 : 0;
             $product->update($input);
             $product->properties()->sync($input['properties'] ?? []);

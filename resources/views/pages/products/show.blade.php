@@ -4,24 +4,16 @@
     <article class="py-12 inner-container">
         <div class="grid gap-6 xl:grid-cols-3 ">
             <main class="xl:col-span-2">
-                @if(count($product?->images ?? []))
-                    <div>
-                        <ul>
-                            @foreach($product?->images as $image)
-                                <li>
-                                    <img src="{{$image}}"
-                                         alt="{{__('screenshot') . $loop->iteration}} - {{$product->title}}" width="200"
-                                         height="200" loading="lazy">
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+
                 <section class="mb-6">
                     <h2>
                         {{__('description')}}
                     </h2>
                     {!! textToParagraphs($product->body) !!}
+
+                    @if(count($product?->images ?? []))
+                        <x-portfolio.gallery :images="$product?->images"/>
+                    @endif
                 </section>
                 @if(count($product?->features ?? []))
                     <section>
