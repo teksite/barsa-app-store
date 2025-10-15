@@ -1,7 +1,7 @@
-<div x-show="isOpen"
+<div x-show="isOpen" x-cloak
      class="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
      x-transition
-     @click.self="closeModal">
+     @click.self="closeModal" style="display: none">
     <div class="bg-white rounded-lg shadow-lg max-w-3xl w-11/12 max-h-[90vh] overflow-y-auto relative">
         <div class="flex items-center justify-between border-b border-zinc-700 px-3 py-2">
             <h2 class="text-xl font-bold" x-text="title"></h2>
